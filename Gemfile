@@ -77,3 +77,5 @@ group :test do
 end
 
 gem "devise"
+gem "cloudinary"
+gem "dotenv-rails", groups: [:development, :test]

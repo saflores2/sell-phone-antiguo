@@ -1,0 +1,21 @@
+<h1>Products#new</h1>
+<p>Find me in app/views/products/new.html.erb</p>
+
+<div class="container">
+  <h1>Create a product</h1>
+    <%= simple_form_for (@product) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :year %>
+    <%= f.input :brand %>
+    <%= f.input :model %>
+    <%= f.input :operator %>
+    <%= f.input :status, collection: ["Nuevo", "Usado"] %>
+    <%= f.input :price %>
+    <%= f.input :description %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit %>
+  <% end %>
+
+  <%= link_to("Back to products", products_path) %>
+
+</div>
