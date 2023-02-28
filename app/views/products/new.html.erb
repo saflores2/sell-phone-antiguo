@@ -9,11 +9,10 @@
     <%= f.input :brand %>
     <%= f.input :model %>
     <%= f.input :operator %>
-    <%= f.association :status %>
+    <%= f.input :status, collection: ["Nuevo", "Usado"] %>
     <%= f.input :price %>
     <%= f.input :description %>
-    <%= f.input :available %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.submit %>
   <% end %>
 
