@@ -1,2 +1,22 @@
 <h1>Products#edit</h1>
 <p>Find me in app/views/products/edit.html.erb</p>
+
+<div class="container">
+  <h1>Edit product</h1>
+    <%= simple_form_for (@product) do |f| %>
+    <%= f.input :name %>
+    <%= f.input :year %>
+    <%= f.input :brand %>
+    <%= f.input :model %>
+    <%= f.input :operator %>
+    <%= f.input :status, collection: ["Nuevo", "Usado"] %>
+    <%= f.input :price %>
+    <%= f.input :description %>
+    <%= f.input :available, as: :boolean %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    <%= f.submit %>
+  <% end %>
+
+  <%= link_to("Back to product", product_path(@product.id)) %>
+
+</div>
