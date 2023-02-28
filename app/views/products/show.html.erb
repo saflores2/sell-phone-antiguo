@@ -1,5 +1,17 @@
 <h1>Products#show</h1>
 <p>Find me in app/views/products/show.html.erb</p>
+<%= @product.name %>
+<%= @product.year %>
+<%= @product.brand %>
+<%= @product.operator %>
+<%= @product.model %>
+<%= @product.description %>
+<%= @product.status %>
+<%= @product.price %>
+<%= @product.available %>
 <% @product.photos.each do |photo| %>
   <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
+
+<%= link_to("Edit product", edit_product_path(@product.id)) %>
+<%= link_to("Back to products", products_path) %>

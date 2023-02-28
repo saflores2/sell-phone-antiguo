@@ -10,7 +10,8 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save#@product.photo.attached? && @list.save
+    @product.user = current_user
+    if @product.save
       redirect_to product_path(@product.id)
     else
       render :new, status: :unprocessable_entity
@@ -18,29 +19,37 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.find(params[:id])
   end
 
   def edit
+    @product = Product.find(params[:id])
   end
 
   def update
+    @product = Product.find(params[:id])
     @product.update(product_params)
-    redirect_to product_path(@product)
+    redirect_to product_path(@product.id)
   end
 
   def destroy
+    @product = Product.find(params[:id])
     @product.destroy
     # No need for app/views/restaurants/destroy.html.erb
     redirect_to products_path, status: :see_other
   end
 
+  def my_products
+  end
+
   private
 
   def product_params
-    params.require(:product).permit(:name, :year, :brand, :operator, :model, :description, :status, :price, :available, photos: [])
+    params.require(:product).permit(:name, :year, :brand, :operator, :model, :description, :status, :price, :available,
+                                    photos: [])
   end
 
   def set_product
-    @products = Products.find(params[:id])
+    @product = Product.find(params[:id])
   end
 end
