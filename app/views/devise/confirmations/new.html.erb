@@ -5,6 +5,10 @@
   <%= f.full_error :confirmation_token %>
 
   <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :last_name %>
+    <%= f.input :address %>
+    <%= f.input :phone %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
